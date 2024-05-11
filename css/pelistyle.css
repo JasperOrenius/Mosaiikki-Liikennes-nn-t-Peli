@@ -15,6 +15,62 @@ body {
     position: absolute;
     top: 10px;
     background-color: lightblue;
+    border: 12px solid lightblue;
+    border-radius: 8px;
+}
+#top-container {
+    width: inherit;
+    height: 60px;
+    background-color: lightblue;
+}
+#game-container {
+    flex-grow: 1;
+    display: flex;
+    width: inherit;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 8px;
+}
+#help-button {
+    align-self: flex-end;
+    position: absolute;
+    top: 5px;
+    right: 55px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 1px transparent;
+    font-family: arial black, sans-serif;
+    background-color: lightgreen;
+    box-shadow: 0 3px 5px black;
+    font-size: 25px;
+}
+#exit-button {
+    align-self: flex-end;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 1px transparent;
+    font-family: arial black, sans-serif;
+    background-color: red;
+    box-shadow: 0 3px 5px black;
+    font-size: 25px;
+}
+#question-Text {
+    align-self: center;
+    font-family: arial black, sans-serif;
+}
+.button {
+    background-color: white;
+    border: 2p solid black;
+    border-radius: 12px;
+    width: 90px;
+    height: 45px;
 }
 .correct {
     background-color: green;

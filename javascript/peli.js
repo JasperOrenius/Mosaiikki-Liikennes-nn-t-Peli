@@ -143,20 +143,20 @@ function checkAnswer(playerGuess) {
     }
     answerObject.answered = true;
     answerObject.userAnswer = playerGuess;
-    updateButtonStyling(playerGuess);
+    updateButtonStyling();
 }
 
-function updateButtonStyling(playerGuess) {
+function updateButtonStyling() {
     const answerObject = answeredQuestions[currentQuestionIndex];
     if (answerObject.answered) {
         if (answerObject.correct) {
-            if (playerGuess === true) {
+            if (answerObject.userAnswer === true) {
                 trueButton.classList.add('correct');
             } else {
                 falseButton.classList.add('correct');
             }
         } else {
-            if (playerGuess === true) {
+            if (answerObject.userAnswer === true) {
                 trueButton.classList.add('incorrect');
             } else {
                 falseButton.classList.add('incorrect');

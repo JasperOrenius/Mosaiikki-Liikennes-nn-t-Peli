@@ -8,16 +8,21 @@
 </head>
 <body>
 <div id="quiz">
-    <div id="image-container">
-        <img id="question-image" src="" alt="Question Image" width="600" height="300">
+    <div id="top-container">
+        <button id="help-button">?</button>
+        <button id="exit-button">X</button>
+    </div>
+    <div id="game-container">
+        <img id="question-image" src="" alt="Question Image" width="450" height="400">
         <p id="question-Text"></p>
+        <div id="button-container">
+            <button id="previous-button"><</button>
+            <button id="true-button" class="button">Oikein</button>
+            <button id="false-button" class="button">Väärin</button>
+            <button id="next-button">></button>
+        </div>
     </div>
-    <div id="button-container">
-        <button id="previous-button"><</button>
-        <button id="true-button">Oikein</button>
-        <button id="false-button">Väärin</button>
-        <button id="next-button">></button>
-    </div>
+    
 </div>
 <script src="../javascript/peli.js"></script>
 </body>
