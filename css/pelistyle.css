@@ -5,6 +5,9 @@ body {
     justify-content: center;
     margin: 0;
 }
+button:hover {
+    transform: scale(1.1);
+}
 #quiz {
     width: 650px;
     height: 700px;
@@ -27,7 +30,7 @@ body {
     flex-grow: 1;
     display: flex;
     width: inherit;
-    background-color: white;
+    background-color: rgb(255, 250, 224);
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -65,12 +68,64 @@ body {
     align-self: center;
     font-family: arial black, sans-serif;
 }
-.button {
-    background-color: white;
-    border: 2p solid black;
-    border-radius: 12px;
+#previous-button {
+    margin-right: 10px;
+    background-image: url('../images/Previous.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: 0 none;
+    width: 40px;
+    height: 40px;
+}
+#next-button {
+    margin-left: 10px;
+    background-image: url('../images/Next.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: 0 none;
+    width: 40px;
+    height: 40px;
+}
+#true-button {
+    background-image: url('../images/Oikein\ Ж.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: 0 none;
     width: 90px;
     height: 45px;
+}
+.correct {
+    background-image: url('../images/Oikein\ Ж.png');
+}
+.correct_green {
+    background-image: url('../images/Oikein\ З.png');
+}
+.correct_red {
+    background-image: url('../images/Oikein\ К.png');
+}
+#false-button {
+    background-image: url('../images/Väärin\ Ж.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: 0 none;
+    width: 90px;
+    height: 45px;
+}
+.incorrect {
+    background-image: url('../images/Väärin\ Ж.png');
+}
+.incorrect_green {
+    background-image: url('../images/Väärin\ З.png');
+}
+.incorrect_red {
+    background-image: url('../images/Väärin\ К.png');
+}
+.button {
+    
 }
 .correct {
     background-color: green;

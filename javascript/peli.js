@@ -8,11 +8,11 @@ const falseButton = document.getElementById('false-button');
 previousButton.addEventListener('click', goToPreviousQuestion);
 nextButton.addEventListener('click', goToNextQuestion);
 
-document.getElementById('true-button').addEventListener('click', function() {
+trueButton.addEventListener('click', function() {
     checkAnswer(true);
 });
 
-document.getElementById('false-button').addEventListener('click', function() {
+falseButton.addEventListener('click', function() {
     checkAnswer(false);
 });
 
@@ -122,8 +122,8 @@ function displayQuestion() {
     const textElement = document.getElementById('question-Text');
     imageElement.src = questions[currentQuestionIndex].imageUrl;
     textElement.textContent = questions[currentQuestionIndex].question;
-    trueButton.classList.remove('correct', 'incorrect');
-    falseButton.classList.remove('correct', 'incorrect');
+    trueButton.classList.remove('correct', 'incorrect', 'correct_green', 'correct_red', 'incorrect_green', 'incorrect_red');
+    falseButton.classList.remove('correct', 'incorrect', 'correct_green', 'correct_red', 'incorrect_green', 'incorrect_red');
     if (!answerObject.answered) {
         trueButton.disabled = false;
         falseButton.disabled = false;
@@ -138,11 +138,9 @@ function checkAnswer(playerGuess) {
     }
     const correctAnswer = questions[currentQuestionIndex].answer;
     const answerObject = answeredQuestions[currentQuestionIndex];
-    if (playerGuess === correctAnswer) {
-        answerObject.correct = true;
-    }
     answerObject.answered = true;
     answerObject.userAnswer = playerGuess;
+    answerObject.correct = (playerGuess === correctAnswer);
     updateButtonStyling();
 }
 
@@ -151,20 +149,21 @@ function updateButtonStyling() {
     if (answerObject.answered) {
         if (answerObject.correct) {
             if (answerObject.userAnswer === true) {
-                trueButton.classList.add('correct');
+                trueButton.classList.add('correct_green');
+                falseButton.classList.remove('correct_red');
             } else {
-                falseButton.classList.add('correct');
+                falseButton.classList.add('correct_green');
+                trueButton.classList.remove('correct_red');
             }
         } else {
             if (answerObject.userAnswer === true) {
-                trueButton.classList.add('incorrect');
+                trueButton.classList.add('incorrect_red');
+                falseButton.classList.remove('incorrect_green');
             } else {
-                falseButton.classList.add('incorrect');
+                falseButton.classList.add('incorrect_red');
+                trueButton.classList.remove('incorrect_green');
             }
         }
-    } else {
-        trueButton.classList.remove('correct', 'incorrect');
-        falseButton.classList.remove('correct', 'incorrect');
     }
     trueButton.disabled = true;
     falseButton.disabled = true;
