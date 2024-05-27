@@ -3,26 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Peli</title>
     <link rel="stylesheet" href="../css/pelistyle.css">
 </head>
 <body>
 <div id="quiz">
     <div id="top-container">
-        <button id="help-button">?</button>
-        <button id="exit-button">X</button>
+        <p id="score">Pisteet 0/15</p>
+        <button id="help-button" onclick="toggleInformationScreen()">?</button>
+        <a href="../index.html"><button id="exit-button">X</button></a>
+    </div>
+    <div id="information-screen">
+        <img id="info-image" src="" alt="Info Image" width="450" height="400">
+        <p id="info-text"></p>
+        <div id="info-button-container">
+            <button id="info_previous-button" onclick="previousInfoScreen()"></button>
+            <button id="play-button" onclick="toggleInformationScreen()">Siirry Peliin</button>
+            <button id="info_next-button" onclick="nextInfoScreen()"></button>
+        </div>
     </div>
     <div id="game-container">
         <img id="question-image" src="" alt="Question Image" width="450" height="400">
         <p id="question-Text"></p>
         <div id="button-container">
-            <button id="previous-button"></button>
+            <button id="previous-button" onclick="goToPreviousQuestion()"></button>
             <button id="true-button" class="button"></button>
             <button id="false-button" class="button"></button>
-            <button id="next-button"></button>
+            <button id="next-button" onclick="goToNextQuestion()"></button>
         </div>
     </div>
-    
 </div>
 <script src="../javascript/peli.js"></script>
 </body>

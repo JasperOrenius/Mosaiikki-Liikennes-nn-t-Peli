@@ -8,6 +8,9 @@ body {
 button:hover {
     transform: scale(1.1);
 }
+button:active {
+    transform: translateY(4px);
+}
 #quiz {
     width: 650px;
     height: 700px;
@@ -28,6 +31,16 @@ button:hover {
 }
 #game-container {
     flex-grow: 1;
+    display: none;
+    width: inherit;
+    background-color: rgb(255, 250, 224);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 8px;
+}
+#information-screen {
+    flex-grow: 1;
     display: flex;
     width: inherit;
     background-color: rgb(255, 250, 224);
@@ -35,6 +48,12 @@ button:hover {
     align-items: center;
     flex-direction: column;
     border-radius: 8px;
+}
+#info-text {
+    font-size: 20px;
+    font-family: arial;
+    font-weight: bold;
+    width: 500px;
 }
 #help-button {
     align-self: flex-end;
@@ -68,6 +87,18 @@ button:hover {
     align-self: center;
     font-family: arial black, sans-serif;
 }
+#score {
+    align-self: center;
+    position: absolute;
+    font-size: 30px;
+    left: 50%;
+    margin-top: 12px;
+    transform: translateX(-50%);
+    font-family: Arial;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px black;
+  }
 #previous-button {
     margin-right: 10px;
     background-image: url('../images/Previous.png');
@@ -88,48 +119,70 @@ button:hover {
     width: 40px;
     height: 40px;
 }
+#info_previous-button {
+    position: absolute;
+    align-items: flex-start;
+    left: 10px;
+    bottom: 10px;
+    background-image: url('../images/Previous.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: 0 none;
+    width: 40px;
+    height: 40px;
+}
+#info_next-button {
+    position: absolute;
+    align-self: flex-end;
+    right: 10px;
+    bottom: 10px;
+    background-image: url('../images/Next.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: 0 none;
+    width: 40px;
+    height: 40px;
+}
 #true-button {
-    background-image: url('../images/Oikein\ Ж.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-color: transparent;
     border: 0 none;
     width: 90px;
     height: 45px;
-}
-.correct {
     background-image: url('../images/Oikein\ Ж.png');
 }
 .correct_green {
-    background-image: url('../images/Oikein\ З.png');
+    background-image: url('../images/Oikein\ З.png') !important;
 }
 .correct_red {
-    background-image: url('../images/Oikein\ К.png');
+    background-image: url('../images/Oikein\ К.png') !important;
 }
 #false-button {
-    background-image: url('../images/Väärin\ Ж.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-color: transparent;
     border: 0 none;
     width: 90px;
     height: 45px;
-}
-.incorrect {
     background-image: url('../images/Väärin\ Ж.png');
 }
 .incorrect_green {
-    background-image: url('../images/Väärin\ З.png');
+    background-image: url('../images/Väärin\ З.png') !important;
 }
 .incorrect_red {
-    background-image: url('../images/Väärin\ К.png');
+    background-image: url('../images/Väärin\ К.png') !important;
 }
-.button {
-    
-}
-.correct {
-    background-color: green;
-}
-.incorrect {
-    background-color: red;
+#play-button {
+    position: relative;
+    bottom: 10px;
+    border: 2px solid black;
+    border-radius: 12px;
+    width: 150px;
+    height: 50px;
+    font-size: 25px;
+    background: rgb(255,38,38);
+    background: radial-gradient(circle, rgba(255,38,38,1) 0%, rgba(255,233,57,1) 100%);
 }

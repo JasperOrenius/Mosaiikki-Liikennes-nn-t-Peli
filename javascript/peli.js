@@ -1,12 +1,18 @@
 let currentQuestionIndex = 0;
+let currentInfoIndex = 0;
+let score = 0;
+
+let isInformationScreenVisible = true;
 
 const previousButton = document.getElementById('previous-button');
 const nextButton = document.getElementById('next-button');
+
+const infoPreviousButton = document.getElementById('info_previous-button');
+const infoNextButton = document.getElementById('info_next-button');
+
 const trueButton = document.getElementById('true-button');
 const falseButton = document.getElementById('false-button');
-
-previousButton.addEventListener('click', goToPreviousQuestion);
-nextButton.addEventListener('click', goToNextQuestion);
+let scoreElement = document.getElementById('score');
 
 trueButton.addEventListener('click', function() {
     checkAnswer(true);
@@ -15,6 +21,33 @@ trueButton.addEventListener('click', function() {
 falseButton.addEventListener('click', function() {
     checkAnswer(false);
 });
+
+const info = [
+    {
+        text: "Tien ylittäminen: Kun haluat ylittää tien, käytä aina suojatietä, jos sellainen on lähellä. Ennen kuin astut tielle, katso molempiin suuntiin ja varmista, että autot ovat pysähtyneet ja on turvallista ylittää. Muista: katso ensin vasemmalle, sitten oikealle ja vielä kerran vasemmalle.",
+        imageUrl: "../images/tien_säännöt-suojatie1.png"
+    },
+    {
+        text: "Pyöräily: Jos pyöräilet, muista käyttää aina kypärää. Se suojaa päätäsi, jos kaadut. Pyöräillessäsi kulje pyörätietä tai tien oikeaa reunaa. Muista myös näyttää kädelläsi suuntamerkkiä, kun käännyt. Näin muut tietävät, minne olet menossa.",
+        imageUrl: "../images/tien_säännöt-kypärän_käyttö1.2.png"
+    },
+    {
+        text: "Kävely: Kun kävelet, kulje jalkakäytävällä tai tien vasemmassa reunassa, jos jalkakäytävää ei ole. Tämä auttaa näkemään vastaantulevat autot paremmin. Ole aina tarkkana ja vältä leikkimistä tiellä.",
+        imageUrl: "../images/tien_säännöt-pyörätie1.png"
+    },
+    {
+        text: "Liikennevalot: Liikennevalot kertovat, milloin voit kävellä ja milloin täytyy odottaa. Kun valo on vihreä, voit ylittää tien, mutta silti on hyvä katsoa, että autot todella pysähtyvät. Jos valo on punainen, odota, vaikka muita ihmisiä menisi tien yli.",
+        imageUrl: "../images/tien_säännöt-liikennevalot1.png"
+    },
+    {
+        text: "Autossa matkustaminen: Kun matkustat autossa, käytä aina turvavyötä. Se pitää sinut turvassa, jos auto joutuu onnettomuuteen. Pienempien lasten on hyvä käyttää turvaistuinta, joka sopii heidän kokoonsa.",
+        imageUrl: "../images/tien_säännöt-turvavyö1.png"
+    },
+    {
+        text: "Kuuntele aikuisia: Muista kuunnella vanhempia ja opettajia, kun he neuvovat liikenteessä. Heidän ohjeensa auttavat sinua pysymään turvassa.",
+        imageUrl: "../images/tien_säännöt-peli1.png"
+    }
+]
 
 const questions = [
     {
@@ -58,7 +91,7 @@ const questions = [
         imageUrl: "../images/tien_säännöt-stop1.png"
     },
     {
-        question: "Pyöräilijät voi käyttää kävelytietä pyörällä ajaessa",
+        question: "Kävelijät voi kävellä pyörätiellä, jos haluaa",
         answer: false,
         imageUrl: "../images/tien_säännöt-pyörätie1.png"
     },
@@ -68,42 +101,27 @@ const questions = [
         imageUrl: "../images/tien_säännöt-pyöräparkki1.png"
     },
     {
-        question: "",
-        answer: false,
-        imageUrl: "../images/tien_säännöt-peli1.png"
-    },
-    {
-        question: "",
-        answer: false,
+        question: "Mäkeä laskiessa kannattaa katsoa, että ketään ei ole edessä",
+        answer: true,
         imageUrl: "../images/tien_säännöt-mäenlasku1.png"
     },
     {
-        question: "",
-        answer: false,
+        question: "Liukkaalla kelillä kannattaa liikkua varovaisesti",
+        answer: true,
         imageUrl: "../images/tien_säännöt-liukkaus1.png"
     },
     {
-        question: "",
-        answer: false,
-        imageUrl: "../images/tien_säännöt-liikennevalot1.png"
-    },
-    {
-        question: "",
-        answer: false,
-        imageUrl: "../images/tien_säännöt-kypärän_käyttö1.2.png"
-    },
-    {
-        question: "",
+        question: "Tietä ylittäessä kannattaa katsoa suoraan alaspäin",
         answer: false,
         imageUrl: "../images/tien_säännöt-katso1.png"
     },
     {
-        question: "",
-        answer: false,
+        question: "Heijastimen käyttö on tärkeää pimeällä",
+        answer: true,
         imageUrl: "../images/tien_säännöt-heijastin1.png"
     },
     {
-        question: "",
+        question: "Aikuisten ja opettajien neuvoja ei kannata kuunnella liikenteessä",
         answer: false,
         imageUrl: "../images/tien_säännöt-bussipysäkki1.png"
     },
@@ -116,20 +134,37 @@ const answeredQuestions = Array.from({ length: questions.length }, () => ({
 }));
 
 displayQuestion();
+displayInfo();
+
+function toggleInformationScreen() {
+    const informationScreen = document.getElementById('information-screen');
+    const gameContainer = document.getElementById('game-container');
+    isInformationScreenVisible = !isInformationScreenVisible;
+    informationScreen.style.display = isInformationScreenVisible ? 'flex' : 'none';
+    gameContainer.style.display = !isInformationScreenVisible ? 'flex' : 'none';
+}
+
+function displayInfo() {
+    const imageElement = document.getElementById('info-image');
+    const textElement = document.getElementById('info-text');
+    imageElement.src = info[currentInfoIndex].imageUrl;
+    textElement.textContent = info[currentInfoIndex].text;
+}
+
 function displayQuestion() {
     const imageElement = document.getElementById('question-image');
     const answerObject = answeredQuestions[currentQuestionIndex];
     const textElement = document.getElementById('question-Text');
     imageElement.src = questions[currentQuestionIndex].imageUrl;
     textElement.textContent = questions[currentQuestionIndex].question;
-    trueButton.classList.remove('correct', 'incorrect', 'correct_green', 'correct_red', 'incorrect_green', 'incorrect_red');
-    falseButton.classList.remove('correct', 'incorrect', 'correct_green', 'correct_red', 'incorrect_green', 'incorrect_red');
-    if (!answerObject.answered) {
+    resetButtonStyles();
+    if (answerObject.answered) {
+        updateButtonStyling();
+    } else {
         trueButton.disabled = false;
         falseButton.disabled = false;
-    } else {
-        updateButtonStyling();
     }
+    toggleNavigationButtons();
 }
 
 function checkAnswer(playerGuess) {
@@ -142,26 +177,29 @@ function checkAnswer(playerGuess) {
     answerObject.userAnswer = playerGuess;
     answerObject.correct = (playerGuess === correctAnswer);
     updateButtonStyling();
+
+    if (answerObject.correct) {
+        score++;
+    }
+    scoreElement.textContent = `Pisteet: ${score}/15`;
+    toggleNavigationButtons();
 }
 
 function updateButtonStyling() {
     const answerObject = answeredQuestions[currentQuestionIndex];
+    resetButtonStyles();
     if (answerObject.answered) {
         if (answerObject.correct) {
             if (answerObject.userAnswer === true) {
                 trueButton.classList.add('correct_green');
-                falseButton.classList.remove('correct_red');
             } else {
-                falseButton.classList.add('correct_green');
-                trueButton.classList.remove('correct_red');
+                falseButton.classList.add('incorrect_green');
             }
         } else {
             if (answerObject.userAnswer === true) {
-                trueButton.classList.add('incorrect_red');
-                falseButton.classList.remove('incorrect_green');
+                trueButton.classList.add('correct_red');
             } else {
                 falseButton.classList.add('incorrect_red');
-                trueButton.classList.remove('incorrect_green');
             }
         }
     }
@@ -169,10 +207,30 @@ function updateButtonStyling() {
     falseButton.disabled = true;
 }
 
+function resetButtonStyles() {
+    trueButton.classList.remove('correct', 'incorrect', 'correct_green', 'correct_red', 'incorrect_green', 'incorrect_red');
+    falseButton.classList.remove('correct', 'incorrect', 'correct_green', 'correct_red', 'incorrect_green', 'incorrect_red');
+    trueButton.style.backgroundImage = "url('../images/Oikein\ Ж.png')";
+    falseButton.style.backgroundImage = "url('../images/Väärin\ Ж.png')";
+}
+
 toggleNavigationButtons();
+toggleInfoNavigationButtons();
+
 function toggleNavigationButtons() {
     previousButton.style.display = currentQuestionIndex === 0 ? 'none' : 'inline-block';
-    nextButton.style.display = currentQuestionIndex === questions.length - 1 ? 'none' : 'inline-block';
+    
+    const answerObject = answeredQuestions[currentQuestionIndex];
+    if (answerObject.answered) {
+        nextButton.style.display = currentQuestionIndex === questions.length - 1 ? 'none' : 'inline-block';
+    } else {
+        nextButton.style.display = 'none';
+    }
+}
+
+function toggleInfoNavigationButtons() {
+    infoPreviousButton.style.display = currentInfoIndex === 0 ? 'none' : 'inline-block';
+    infoNextButton.style.display = currentInfoIndex === info.length - 1 ? 'none' : 'inline-block';
 }
 
 function goToPreviousQuestion() {
@@ -188,5 +246,21 @@ function goToNextQuestion() {
         currentQuestionIndex++;
         displayQuestion();
         toggleNavigationButtons();
+    }
+}
+
+function previousInfoScreen() {
+    if(currentInfoIndex > 0) {
+        currentInfoIndex--;
+        displayInfo();
+        toggleInfoNavigationButtons();
+    }
+}
+
+function nextInfoScreen() {
+    if(currentInfoIndex < info.length - 1) {
+        currentInfoIndex++;
+        displayInfo();
+        toggleInfoNavigationButtons();
     }
 }

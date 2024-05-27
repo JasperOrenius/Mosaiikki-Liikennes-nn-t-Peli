@@ -1,5 +1,5 @@
 function startGame() {
-    window.location.href = "pages/peli.html";
+    window.location.href = "pages/Peli.html";
 }
 
 function showInstructions() {
