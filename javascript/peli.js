@@ -6,6 +6,7 @@ let isInformationScreenVisible = true;
 
 const previousButton = document.getElementById('previous-button');
 const nextButton = document.getElementById('next-button');
+const playButton = document.getElementById('play-button');
 
 const infoPreviousButton = document.getElementById('info_previous-button');
 const infoNextButton = document.getElementById('info_next-button');
@@ -231,6 +232,12 @@ function toggleNavigationButtons() {
 function toggleInfoNavigationButtons() {
     infoPreviousButton.style.display = currentInfoIndex === 0 ? 'none' : 'inline-block';
     infoNextButton.style.display = currentInfoIndex === info.length - 1 ? 'none' : 'inline-block';
+    if(currentInfoIndex == info.length - 1) {
+        playButton.style.display = 'block';
+    }
+    else {
+        playButton.style.display = 'none';
+    }
 }
 
 function goToPreviousQuestion() {
