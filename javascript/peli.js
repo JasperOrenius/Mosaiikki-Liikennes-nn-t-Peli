@@ -223,7 +223,7 @@ function toggleNavigationButtons() {
     
     const answerObject = answeredQuestions[currentQuestionIndex];
     if (answerObject.answered) {
-        nextButton.style.display = currentQuestionIndex === questions.length - 1 ? 'none' : 'inline-block';
+        nextButton.style.display = currentQuestionIndex === questions.length ? 'none' : 'inline-block';
     } else {
         nextButton.style.display = 'none';
     }
@@ -253,6 +253,10 @@ function goToNextQuestion() {
         currentQuestionIndex++;
         displayQuestion();
         toggleNavigationButtons();
+    }
+    else {
+        localStorage.setItem('score', score);
+        window.location.href = "../pages/EndScreen.html";
     }
 }
 
