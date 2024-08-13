@@ -5,7 +5,6 @@ body {
     justify-content: center;
     margin: 0;
 }
-
 #endScreen {
     width: 700px;
     height: 650px;
@@ -20,4 +19,46 @@ body {
     background-image: url('../images/tien_säännöt-valot1.png');
     background-size: cover;
     background-position: center;
+}
+#well-done {
+    align-self: center;
+    position: absolute;
+    font-size: 50px;
+    left: 50%;
+    top: 20px;
+    transform: translateX(-50%);
+    font-family: Arial;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px black;
+}
+#score-display {
+    align-self: center;
+    position: absolute;
+    font-size: 30px;
+    left: 50%;
+    top: 100px;
+    transform: translateX(-50%);
+    font-family: Arial;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px black;
+}
+#menu-button {
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 60%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; 
+}
+#menu-button:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding:25px 40px ;
+    font-size:25px ;
 }
