@@ -3,6 +3,8 @@ let currentInfoIndex = 0;
 let score = 0;
 
 let isInformationScreenVisible = true;
+let isGameScreenVisible = false;
+let isTutorialScreenVisible = true;
 
 const previousButton = document.getElementById('previous-button');
 const nextButton = document.getElementById('next-button');
@@ -137,12 +139,31 @@ const answeredQuestions = Array.from({ length: questions.length }, () => ({
 displayQuestion();
 displayInfo();
 
-function toggleInformationScreen() {
+function toggleTutorialScreen() {
     const informationScreen = document.getElementById('information-screen');
     const gameContainer = document.getElementById('game-container');
-    isInformationScreenVisible = !isInformationScreenVisible;
-    informationScreen.style.display = isInformationScreenVisible ? 'flex' : 'none';
-    gameContainer.style.display = !isInformationScreenVisible ? 'flex' : 'none';
+    const tutorialScreen = document.getElementById('tutorial-screen');
+    isTutorialScreenVisible = !isTutorialScreenVisible;
+    if(isInformationScreenVisible) {
+        informationScreen.style.display = !isTutorialScreenVisible ? 'flex' : 'none';
+    }
+    else if(isGameScreenVisible) {
+        gameContainer.style.display = !isTutorialScreenVisible ? 'flex' : 'none';
+    }
+    tutorialScreen.style.display = isTutorialScreenVisible ? 'flex' : 'none';
+}
+
+function goToGame() {
+    toggleTutorialScreen();
+}
+
+function startGame() {
+    const informationScreen = document.getElementById('information-screen');
+    const gameContainer = document.getElementById('game-container');
+    isInformationScreenVisible = false;
+    isGameScreenVisible = true;
+    informationScreen.style.display = 'none';
+    gameContainer.style.display = 'flex';
 }
 
 function displayInfo() {

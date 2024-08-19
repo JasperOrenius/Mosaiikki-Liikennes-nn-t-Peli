@@ -10,15 +10,19 @@
 <div id="quiz">
     <div id="top-container">
         <p id="score">Pisteet 0/15</p>
-        <button id="help-button" onclick="toggleInformationScreen()">?</button>
+        <button id="help-button" onclick="toggleTutorialScreen()">?</button>
         <a href="../index.html"><button id="exit-button">X</button></a>
+    </div>
+    <div id="tutorial-screen">
+        <p id="tutorial-text">Pelin alussa sinulle näytetään teksti, joka kertoo tärkeistä liikennesäännöistä. Lue teksti ensin huolellisesti läpi. Kun olet lukenut tekstin, sinulle esitetään kysymyksiä, jotka liittyvät lukemaasi. Jokaisessa kysymyksessä on kaksi vastausvaihtoehtoa: "Kyllä" tai "Ei". Valitse oikea vastaus painamalla sopivaa painiketta. Jos napin väri muuttuu vihreäksi, vastaus on oikein. Jos anpin väri muuttuu punaiseksi, vastaus on väärin. Vastattuasi kysymykseen oikean puolisen napin viereen ilmestyy nuoli jolla pääset seuraavaan kysymykseen. Kun olet vastannut kaikkiin kysymyksiin, näet yhteenvedon suorituksestasi. ONNEA PELIIN!</p>
+        <button id="start-game-button" onclick="goToGame()">SIIRRY PELIIN</button>
     </div>
     <div id="information-screen">
         <img id="info-image" src="" alt="Info Image" width="450" height="400">
         <p id="info-text"></p>
         <div id="info-button-container">
             <button id="info_previous-button" onclick="previousInfoScreen()"></button>
-            <button id="play-button" onclick="toggleInformationScreen()">Siirry Peliin</button>
+            <button id="play-button" onclick="startGame()">ALOITA</button>
             <button id="info_next-button" onclick="nextInfoScreen()"></button>
         </div>
     </div>
