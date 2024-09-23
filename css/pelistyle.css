@@ -19,10 +19,8 @@ button:active {
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 10px;
+    top: 0px;
     background-color: lightblue;
-    border: 12px solid lightblue;
-    border-radius: 8px;
 }
 #top-container {
     width: inherit;
@@ -30,9 +28,9 @@ button:active {
     background-color: lightblue;
 }
 #game-container {
-    flex-grow: 1;
     display: none;
-    width: inherit;
+    width: 95%;
+    height: 85%;
     background-color: rgb(255, 250, 224);
     justify-content: center;
     align-items: center;
@@ -40,9 +38,9 @@ button:active {
     border-radius: 8px;
 }
 #information-screen {
-    flex-grow: 1;
     display: none;
-    width: inherit;
+    width: 95%;
+    height: 85%;
     background-color: rgb(255, 250, 224);
     justify-content: center;
     align-items: center;
@@ -50,9 +48,10 @@ button:active {
     border-radius: 8px;
 }
 #tutorial-screen {
-    flex-grow: 1;
     display: flex;
     width: inherit;
+    width: 95%;
+    height: 85%;
     background-color: rgb(255, 250, 224);
     justify-content: center;
     align-items: center;
@@ -67,7 +66,7 @@ button:active {
 }
 #tutorial-text {
     text-align: center;
-    font-size: 25px;
+    font-size: 24px;
     font-family: arial;
     font-weight: bold;
     width: 500px;
@@ -76,7 +75,7 @@ button:active {
     align-self: flex-end;
     position: absolute;
     top: 5px;
-    right: 55px;
+    right: 60px;
     height: 40px;
     width: 40px;
     border-radius: 50%;
@@ -90,7 +89,7 @@ button:active {
     align-self: flex-end;
     position: absolute;
     top: 5px;
-    right: 5px;
+    right: 10px;
     height: 40px;
     width: 40px;
     border-radius: 50%;
@@ -139,8 +138,8 @@ button:active {
 #info_previous-button {
     position: absolute;
     align-items: flex-start;
-    left: 10px;
-    bottom: 10px;
+    left: 25px;
+    bottom: 25px;
     background-image: url('../images/Previous.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -152,8 +151,8 @@ button:active {
 #info_next-button {
     position: absolute;
     align-self: flex-end;
-    right: 10px;
-    bottom: 10px;
+    right: 20px;
+    bottom: 25px;
     background-image: url('../images/Next.png');
     background-size: contain;
     background-repeat: no-repeat;
