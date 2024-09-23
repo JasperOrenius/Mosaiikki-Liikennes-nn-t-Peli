@@ -168,13 +168,13 @@ button:active {
     border: 0 none;
     width: 90px;
     height: 45px;
-    background-image: url('../images/Oikein\ Ж.png');
+    background-image: url('../images/Oikein.png');
 }
 .correct_green {
-    background-image: url('../images/Oikein\ З.png') !important;
+    background-image: url('../images/Oikein_O.png') !important;
 }
 .correct_red {
-    background-image: url('../images/Oikein\ К.png') !important;
+    background-image: url('../images/Oikein_V.png') !important;
 }
 #false-button {
     background-size: contain;
@@ -183,13 +183,13 @@ button:active {
     border: 0 none;
     width: 90px;
     height: 45px;
-    background-image: url('../images/Väärin\ Ж.png');
+    background-image: url('../images/Vaarin.png');
 }
 .incorrect_green {
-    background-image: url('../images/Väärin\ З.png') !important;
+    background-image: url('../images/Vaarin_O.png') !important;
 }
 .incorrect_red {
-    background-image: url('../images/Väärin\ К.png') !important;
+    background-image: url('../images/Vaarin_V.png') !important;
 }
 #play-button {
     position: relative;
